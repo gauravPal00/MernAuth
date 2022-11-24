@@ -1,6 +1,7 @@
 const initialState = {
    token:"",
    success:false,
+   data:""
 }
 
 export const LoginReducers = (state=initialState,action)=>{
@@ -20,6 +21,14 @@ export const LoginReducers = (state=initialState,action)=>{
                     ...state,
                     token:"",
                 }
+
+            case "GETUSERDATA":
+                return{
+                    ...state,
+                    data:action.payload.username
+                }
+
+
         default : return state 
     }
 }

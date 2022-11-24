@@ -3,7 +3,7 @@ import { TextField, Box, Button, Typography, styled } from '@mui/material';
 import {useDispatch } from 'react-redux'
 import { registerUser,loginUser } from '../../redux/action/index';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+
 
 const Component = styled(Box)`
     width: 400px;
@@ -69,12 +69,12 @@ const signupInitialValues = {
     password: '',
 };
 
-export const Login = () => {
+export default function Login()  {
     const [login, setLogin] = useState(loginInitialValues);
     const [signup, setSignup] = useState(signupInitialValues);
     const [account, toggleAccount] = useState('login');
-    const navigate = useNavigate()
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate()
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
     const dispatch = useDispatch()
@@ -100,8 +100,8 @@ export const Login = () => {
          res = await dispatch(loginUser(login))
             setLogin(loginInitialValues)
             setErrors('')
-            if(res.success === true){
-                navigate('/home')
+            if(res.login === true){
+                navigate("/home")
             }
         }
     }
@@ -131,9 +131,6 @@ export const Login = () => {
         setErrors("")
     }
 
-    // useEffect(()=>{
-        
-    // },[dispatch])
     
 
     return (

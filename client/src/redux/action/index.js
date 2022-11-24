@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import {  loginData } from './actionCreators';
+import {  getData, loginData } from './actionCreators';
 
 
 
@@ -17,13 +17,13 @@ export const registerUser = (data) => {
 }
 
 // login api user
-export const loginUser = (data)=>{
+export const loginUser = (value)=>{
     return async dispatch =>{
         try{
-            let res = await axios.post("http://localhost:8000/login",data)
-            dispatch(loginData(res.data))
-            localStorage.setItem("token",JSON.stringify(res.data.token))
-            return res.data
+            let {data} = await axios.post("http://localhost:8000/login",value)
+            dispatch(loginData(data))
+            localStorage.setItem('token',JSON.stringify(data.token))
+            return { login: true };
         }
         catch(error){
             console.log(error);
@@ -42,8 +42,7 @@ export const getUserdata = (data)=>{
                    "auth-token": data
                   }
             })
-            // dispatch(getData(res.data))
-            console.log(res);
+            dispatch(getData(res.data))
         }
         catch(error){
             console.log(error);
