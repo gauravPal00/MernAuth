@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './components/home/Home';
 import { PrivateRoute } from './privateroute/PrivatRoute';
 import { Error } from './error/Error';
+import { TokenErros } from './error/TokenErros';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path='/' element={<Login />} />
           <Route path='/home' element={<PrivateRoute/>}>
             <Route path='/home' element={<Home/>}/>
+            <Route path='error' element={<TokenErros/>}/>
           </Route>
          <Route path="*" element={<Error/>} /> 
         </Routes>

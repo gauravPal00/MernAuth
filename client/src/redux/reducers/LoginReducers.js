@@ -1,7 +1,8 @@
 const initialState = {
    token:"",
    success:false,
-   data:""
+   data:"",
+   error:""
 }
 
 export const LoginReducers = (state=initialState,action)=>{
@@ -28,6 +29,11 @@ export const LoginReducers = (state=initialState,action)=>{
                     data:action.payload.username
                 }
 
+                case "ERRORHANLDER":
+                    return{
+                        ...state,
+                        error:true
+                    }
 
         default : return state 
     }

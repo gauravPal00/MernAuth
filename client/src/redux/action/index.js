@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import {  getData, loginData } from './actionCreators';
+import {  getData, loginData,tokenError } from './actionCreators';
 
 
 
@@ -45,8 +45,13 @@ export const getUserdata = (data)=>{
             dispatch(getData(res.data))
         }
         catch(error){
-            console.log(error);
-            toast.error(error.message)
+          dispatch(tokenError())
+          localStorage.clear()
+          toast.error("Token is not valid")
+          setTimeout(()=>{
+              window.location.reload()
+          },1000)
+         
         }
     }
 }

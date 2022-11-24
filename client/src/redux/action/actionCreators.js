@@ -17,3 +17,9 @@ export const getData = (data)=>{
         payload:data
     }
 } 
+
+export const tokenError = ()=>{
+    return{
+        type:"ERRORHANLDER",
+    }
+}

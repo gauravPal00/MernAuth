@@ -87,7 +87,6 @@ export default function Login()  {
         setSignup({ ...signup, [e.target.name]: e.target.value });
     }
 
-
     const loginHandler = async(e) => {
         e.preventDefault()
         let res
@@ -130,8 +129,6 @@ export default function Login()  {
         setSignup(signupInitialValues)
         setErrors("")
     }
-
-    
 
     return (
 
